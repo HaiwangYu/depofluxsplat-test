@@ -4,33 +4,37 @@ import matplotlib.pyplot as plt
 
 #402964-0-20250528T173900Z
 #402964-1-20250528T174050Z
-file_name_reco="test1/g4-rec-0.h5"
-file_name_true="test1/g4-tru-0.h5"
-file_name_reco="g4-rec-0.h5"
-file_name_true="g4-tru-0.h5"
+file_name_reco="ref/g4-rec-0.h5"
+file_name_true="ref/g4-tru-0.h5"
+# file_name_reco="g4-rec-0.h5"
+# file_name_true="g4-tru-0.h5"
+key_tickinfo = "/0/tickinfo_deposplat0"
 key_reco="/100/frame_loose_lf0"
 key_true="/0/frame_deposplat0"
 data_reco = h5py.File(file_name_reco, "r")
 data_true = h5py.File(file_name_true, "r")
 f_true = data_true.get(key_true)
 f_reco = data_reco.get(key_reco)
-#f_reco_2 = data_reco.get(key_reco_2)
-#f_dnn = data_reco.get(key_dnn)
 frame_t = np.array(f_true)
 frame_r = np.array(f_reco)
-#frame_r2 = np.array(f_reco_2)
-#frame_d = np.array(f_dnn)
 print(frame_r.shape)
+a_tickinfo = np.array(data_true.get(key_tickinfo))
+print(a_tickinfo)
 
-channles_to_check = [567,450, 317]
+
+channles_to_check = [
+    # 567,
+    400,
+    # 317,
+    ]
 tick_ranges = [
-    [200, 300],
-    [1800, 1900],
-    [5800, 5900],
+    # [200, 300],
+    [1000, 3000],
+    # [5800, 5900],
 ]
 ct_zip = list(zip(channles_to_check, tick_ranges))
 
-do_1d_plot = False
+do_1d_plot = True
 # plt.plot(frame_r[ch,:])
 # plt.plot(frame_t[ch,:])
 # plt.legend(["looseLF","true"])
