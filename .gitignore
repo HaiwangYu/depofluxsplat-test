@@ -1,0 +1,5 @@
+*log
+*.root
+*.h5
+*.db
+*.swp
