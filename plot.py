@@ -18,8 +18,11 @@ f_reco = data_reco.get(key_reco)
 frame_t = np.array(f_true)
 frame_r = np.array(f_reco)
 print(frame_r.shape)
-a_tickinfo = np.array(data_true.get(key_tickinfo))
-print(a_tickinfo)
+a_tickinfo_t = np.array(data_true.get("/0/tickinfo_deposplat0"))
+a_tickinfo_r = np.array(data_reco.get("/100/tickinfo_loose_lf0"))
+print(f"a_tickinfo_t {a_tickinfo_t}")
+print(f"a_tickinfo_r {a_tickinfo_r}")
+exit()
 
 
 channles_to_check = [
